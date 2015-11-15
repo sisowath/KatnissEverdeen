@@ -1,0 +1,48 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="WebApplication1.Site1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Master Page</title>    
+    <script type="/text/stylesheet">
+        window.onload( function () {
+            
+        });
+    </script>
+    <style type="text/css">
+        #header
+        {
+            background-image: url('images/reachingGod.jpg');
+        }
+        #footer 
+        {
+            background-image: url('images/footerBackground.jpg');
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <div id="header">
+            <h1>KATNISS</h1>   
+            <h1>EVERDEEN</h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="accueil.aspx">Accueil</a></li>
+                <li><a href="profile.aspx">Mon profile</a></li>
+                <li><a href="match.aspx">Mes futures rencontres</a></li>
+                <li><a href="logout.aspx">Me déconnecter</a></li>
+            </ul>
+        </div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        <div id="footer">
+            <h1>Site conçu par : Kismony et Samnang - Automne 2015 </h1>
+        </div>
+    </div>
+    </form>
+</body>
+</html>
