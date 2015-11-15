@@ -54,6 +54,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="databases\katnisseverdeen.sql" />
     <Content Include="images\footerBackground.png" />
     <Content Include="images\reachingGod.jpg" />
     <Content Include="Web.config" />
@@ -68,6 +69,7 @@
     <Content Include="logout.aspx" />
     <Content Include="profile.aspx" />
     <Content Include="match.aspx" />
+    <Content Include="Default.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bachelor.cs" />
@@ -115,13 +117,18 @@
     <Compile Include="match.aspx.designer.cs">
       <DependentUpon>match.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site1.Master" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="databases\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>

@@ -20,7 +20,7 @@ namespace WebApplication1
             cnx.Open();
             MySqlCommand cmd = cnx.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM bachelor ORDER BY numberOfLikes DESC LIMIT 5";
+            cmd.CommandText = "SELECT * FROM bachelor ORDER BY numberOfLikes DESC LIMIT 25";
             using (DbDataReader dbrdr = cmd.ExecuteReader())
             {
                 while (dbrdr.Read())
@@ -38,10 +38,12 @@ namespace WebApplication1
                 }
                 LiteralControl chaineHtml = new LiteralControl();
                 chaineHtml.Text = "<table border=\"1px solid black\">";
+                chaineHtml.Text += "<tr><th>Rang</th><th>username</th><th>Likes</th></tr>";
                 for (int i = 0; i < uneListeDeBacheliers.Count; i++)
                 {
                     chaineHtml.Text += "<tr>";
-                    chaineHtml.Text += "<td>" + uneListeDeBacheliers[i].Id + "</td>";
+                    chaineHtml.Text += "<td>" + (i+1) + "</td>";
+                    //chaineHtml.Text += "<td>" + uneListeDeBacheliers[i].Id + "</td>";
                     chaineHtml.Text += "<td>" + uneListeDeBacheliers[i].Username + "</td>";
                     chaineHtml.Text += "<td>" + uneListeDeBacheliers[i].NumberOfLikes + "</td>";
                     chaineHtml.Text += "</tr>";
