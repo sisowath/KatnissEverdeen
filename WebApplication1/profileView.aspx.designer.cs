@@ -10,7 +10,7 @@
 namespace WebApplication1 {
     
     
-    public partial class WebForm4 {
+    public partial class WebForm7 {
         
         /// <summary>
         /// lblMessage control.
@@ -85,57 +85,57 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TextBox txtNumberOfLikes;
         
         /// <summary>
-        /// musicGenres control.
+        /// lblMusicGenres control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder musicGenres;
+        protected global::System.Web.UI.WebControls.Label lblMusicGenres;
         
         /// <summary>
-        /// bookGenres control.
+        /// lblBookGenres control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder bookGenres;
+        protected global::System.Web.UI.WebControls.Label lblBookGenres;
         
         /// <summary>
-        /// movieGenres control.
+        /// lblMovieGenres control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder movieGenres;
+        protected global::System.Web.UI.WebControls.Label lblMovieGenres;
         
         /// <summary>
-        /// brands control.
+        /// lblBrand control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder brands;
+        protected global::System.Web.UI.WebControls.Label lblBrand;
         
         /// <summary>
-        /// hobbies control.
+        /// lblHobbies control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder hobbies;
+        protected global::System.Web.UI.WebControls.Label lblHobbies;
         
         /// <summary>
-        /// sports control.
+        /// lblSports control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder sports;
+        protected global::System.Web.UI.WebControls.Label lblSports;
     }
 }

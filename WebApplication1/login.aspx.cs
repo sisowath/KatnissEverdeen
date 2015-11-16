@@ -39,12 +39,14 @@ namespace WebApplication1
                     String email = dbrdr["email"].ToString();
                     int numberOfLikes;
                     int.TryParse(dbrdr["numberOfLikes"].ToString(), out numberOfLikes);
+                    String imagePath = dbrdr["image"].ToString();
 
                     unBachelor.Id = id;
                     unBachelor.Username = username;
                     unBachelor.Password = password;
                     unBachelor.Email = email;
                     unBachelor.NumberOfLikes = numberOfLikes;
+                    unBachelor.Image = imagePath;
 
                     if (txtPassword.Text.Trim().Equals(unBachelor.Password))
                     {

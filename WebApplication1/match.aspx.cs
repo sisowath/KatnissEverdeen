@@ -16,6 +16,8 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["isConnected"] == null) Response.Redirect("login.aspx");    
+
             MySqlConnection cnx = new MySqlConnection("server=localhost;user=root;password=root;database=katnisseverdeen");
             cnx.Open();
             MySqlCommand cmd = cnx.CreateCommand();
@@ -45,8 +47,21 @@ namespace WebApplication1
                     String email = dbrdr["email"].ToString();
                     int numberOfLikes;
                     int.TryParse(dbrdr["numberOfLikes"].ToString(), out numberOfLikes);
+                    String imagePath = dbrdr["image"].ToString();
+                    int idBookGenres;
+                    int.TryParse(dbrdr["idbookgenres"].ToString(), out idBookGenres);
+                    int idBrands;
+                    int.TryParse(dbrdr["idbrands"].ToString(), out idBrands);
+                    int idHobbies;
+                    int.TryParse(dbrdr["idHobbies"].ToString(), out idHobbies);
+                    int idMovieGenres;
+                    int.TryParse(dbrdr["idmoviegenres"].ToString(), out idMovieGenres);
+                    int idMusicGenres;
+                    int.TryParse(dbrdr["idmusicgenres"].ToString(), out idMusicGenres);
+                    int idSports;
+                    int.TryParse(dbrdr["idsports"].ToString(), out idSports);
 
-                    uneListeDeBacheliers.Add(new Bachelor(id, username, password, email, numberOfLikes));
+                    uneListeDeBacheliers.Add(new Bachelor(id, username, password, email, numberOfLikes, imagePath, idBookGenres, idBrands, idHobbies, idMovieGenres, idMusicGenres, idSports));
                 }
                 LiteralControl chaineHtml = new LiteralControl();
                 chaineHtml.Text = "<table border=\"1px solid black\">";
@@ -57,6 +72,7 @@ namespace WebApplication1
                     chaineHtml.Text += "<td>" + uneListeDeBacheliers[i].Username + "</td>";                    
                     chaineHtml.Text += "<td>" + uneListeDeBacheliers[i].NumberOfLikes + "</td>";
                     chaineHtml.Text += "<td>" + "100%" + "</td>";
+                    chaineHtml.Text += "<td><a href=\"profileView.aspx?username="+uneListeDeBacheliers[i].Username+"\">Voir profile</a></td>";
                     chaineHtml.Text += "</tr>";
                 }
                 suggestionList.Controls.Add(chaineHtml);
@@ -86,8 +102,21 @@ namespace WebApplication1
                     String email = dbrdr["email"].ToString();
                     int numberOfLikes;
                     int.TryParse(dbrdr["numberOfLikes"].ToString(), out numberOfLikes);
+                    String imagePath = dbrdr["image"].ToString();
+                    int idBookGenres;
+                    int.TryParse(dbrdr["idbookgenres"].ToString(), out idBookGenres);
+                    int idBrands;
+                    int.TryParse(dbrdr["idbrands"].ToString(), out idBrands);
+                    int idHobbies;
+                    int.TryParse(dbrdr["idHobbies"].ToString(), out idHobbies);
+                    int idMovieGenres;
+                    int.TryParse(dbrdr["idmoviegenres"].ToString(), out idMovieGenres);
+                    int idMusicGenres;
+                    int.TryParse(dbrdr["idmusicgenres"].ToString(), out idMusicGenres);
+                    int idSports;
+                    int.TryParse(dbrdr["idsports"].ToString(), out idSports);
 
-                    uneListeDeBacheliers.Add(new Bachelor(id, username, password, email, numberOfLikes));
+                    uneListeDeBacheliers.Add(new Bachelor(id, username, password, email, numberOfLikes, imagePath, idBookGenres, idBrands, idHobbies, idMovieGenres, idMusicGenres, idSports));
                 }
                 LiteralControl chaineHtml = new LiteralControl();
                 chaineHtml.Text += "<tr><td colspan=\"3\">==========</td></tr>";
@@ -97,6 +126,7 @@ namespace WebApplication1
                     chaineHtml.Text += "<td>" + uneListeDeBacheliers[i].Username + "</td>";
                     chaineHtml.Text += "<td>" + uneListeDeBacheliers[i].NumberOfLikes + "</td>";
                     chaineHtml.Text += "<td>" + "84%" + "</td>";
+                    chaineHtml.Text += "<td><a href=\"profileView.aspx?username=" + uneListeDeBacheliers[i].Username + "\">Voir profile</a></td>";
                     chaineHtml.Text += "</tr>";
                 }
                 suggestionList.Controls.Add(chaineHtml);
@@ -126,8 +156,21 @@ namespace WebApplication1
                     String email = dbrdr["email"].ToString();
                     int numberOfLikes;
                     int.TryParse(dbrdr["numberOfLikes"].ToString(), out numberOfLikes);
+                    String imagePath = dbrdr["image"].ToString();
+                    int idBookGenres;
+                    int.TryParse(dbrdr["idbookgenres"].ToString(), out idBookGenres);
+                    int idBrands;
+                    int.TryParse(dbrdr["idbrands"].ToString(), out idBrands);
+                    int idHobbies;
+                    int.TryParse(dbrdr["idHobbies"].ToString(), out idHobbies);
+                    int idMovieGenres;
+                    int.TryParse(dbrdr["idmoviegenres"].ToString(), out idMovieGenres);
+                    int idMusicGenres;
+                    int.TryParse(dbrdr["idmusicgenres"].ToString(), out idMusicGenres);
+                    int idSports;
+                    int.TryParse(dbrdr["idsports"].ToString(), out idSports);
 
-                    uneListeDeBacheliers.Add(new Bachelor(id, username, password, email, numberOfLikes));
+                    uneListeDeBacheliers.Add(new Bachelor(id, username, password, email, numberOfLikes, imagePath, idBookGenres, idBrands, idHobbies, idMovieGenres, idMusicGenres, idSports));
                 }
                 LiteralControl chaineHtml = new LiteralControl();
                 chaineHtml.Text += "<tr><td colspan=\"3\">==========</td></tr>"; 
@@ -137,6 +180,7 @@ namespace WebApplication1
                     chaineHtml.Text += "<td>" + uneListeDeBacheliers[i].Username + "</td>";
                     chaineHtml.Text += "<td>" + uneListeDeBacheliers[i].NumberOfLikes + "</td>";
                     chaineHtml.Text += "<td>" + "67%" + "</td>";
+                    chaineHtml.Text += "<td><a href=\"profileView.aspx?username=" + uneListeDeBacheliers[i].Username + "\">Voir profile</a></td>";
                     chaineHtml.Text += "</tr>";
                 }
                 suggestionList.Controls.Add(chaineHtml);
@@ -166,8 +210,21 @@ namespace WebApplication1
                     String email = dbrdr["email"].ToString();
                     int numberOfLikes;
                     int.TryParse(dbrdr["numberOfLikes"].ToString(), out numberOfLikes);
+                    String imagePath = dbrdr["image"].ToString();
+                    int idBookGenres;
+                    int.TryParse(dbrdr["idbookgenres"].ToString(), out idBookGenres);
+                    int idBrands;
+                    int.TryParse(dbrdr["idbrands"].ToString(), out idBrands);
+                    int idHobbies;
+                    int.TryParse(dbrdr["idHobbies"].ToString(), out idHobbies);
+                    int idMovieGenres;
+                    int.TryParse(dbrdr["idmoviegenres"].ToString(), out idMovieGenres);
+                    int idMusicGenres;
+                    int.TryParse(dbrdr["idmusicgenres"].ToString(), out idMusicGenres);
+                    int idSports;
+                    int.TryParse(dbrdr["idsports"].ToString(), out idSports);
 
-                    uneListeDeBacheliers.Add(new Bachelor(id, username, password, email, numberOfLikes));
+                    uneListeDeBacheliers.Add(new Bachelor(id, username, password, email, numberOfLikes, imagePath, idBookGenres, idBrands, idHobbies, idMovieGenres, idMusicGenres, idSports));
                 }
                 LiteralControl chaineHtml = new LiteralControl();
                 chaineHtml.Text += "<tr><td colspan=\"3\">==========</td></tr>";
@@ -177,6 +234,7 @@ namespace WebApplication1
                     chaineHtml.Text += "<td>" + uneListeDeBacheliers[i].Username + "</td>";
                     chaineHtml.Text += "<td>" + uneListeDeBacheliers[i].NumberOfLikes + "</td>";
                     chaineHtml.Text += "<td>" + "50%" + "</td>";
+                    chaineHtml.Text += "<td><a href=\"profileView.aspx?username=" + uneListeDeBacheliers[i].Username + "\">Voir profile</a></td>";
                     chaineHtml.Text += "</tr>";
                 }
                 suggestionList.Controls.Add(chaineHtml);
@@ -206,8 +264,21 @@ namespace WebApplication1
                     String email = dbrdr["email"].ToString();
                     int numberOfLikes;
                     int.TryParse(dbrdr["numberOfLikes"].ToString(), out numberOfLikes);
+                    String imagePath = dbrdr["image"].ToString();
+                    int idBookGenres;
+                    int.TryParse(dbrdr["idbookgenres"].ToString(), out idBookGenres);
+                    int idBrands;
+                    int.TryParse(dbrdr["idbrands"].ToString(), out idBrands);
+                    int idHobbies;
+                    int.TryParse(dbrdr["idHobbies"].ToString(), out idHobbies);
+                    int idMovieGenres;
+                    int.TryParse(dbrdr["idmoviegenres"].ToString(), out idMovieGenres);
+                    int idMusicGenres;
+                    int.TryParse(dbrdr["idmusicgenres"].ToString(), out idMusicGenres);
+                    int idSports;
+                    int.TryParse(dbrdr["idsports"].ToString(), out idSports);
 
-                    uneListeDeBacheliers.Add(new Bachelor(id, username, password, email, numberOfLikes));
+                    uneListeDeBacheliers.Add(new Bachelor(id, username, password, email, numberOfLikes, imagePath, idBookGenres, idBrands, idHobbies, idMovieGenres, idMusicGenres, idSports));
                 }
                 LiteralControl chaineHtml = new LiteralControl();
                 chaineHtml.Text += "<tr><td colspan=\"3\">==========</td></tr>";
@@ -217,6 +288,7 @@ namespace WebApplication1
                     chaineHtml.Text += "<td>" + uneListeDeBacheliers[i].Username + "</td>";
                     chaineHtml.Text += "<td>" + uneListeDeBacheliers[i].NumberOfLikes + "</td>";
                     chaineHtml.Text += "<td>" + "34%" + "</td>";
+                    chaineHtml.Text += "<td><a href=\"profileView.aspx?username=" + uneListeDeBacheliers[i].Username + "\">Voir profile</a></td>";
                     chaineHtml.Text += "</tr>";
                 }
                 suggestionList.Controls.Add(chaineHtml);
@@ -246,8 +318,21 @@ namespace WebApplication1
                     String email = dbrdr["email"].ToString();
                     int numberOfLikes;
                     int.TryParse(dbrdr["numberOfLikes"].ToString(), out numberOfLikes);
+                    String imagePath = dbrdr["image"].ToString();
+                    int idBookGenres;
+                    int.TryParse(dbrdr["idbookgenres"].ToString(), out idBookGenres);
+                    int idBrands;
+                    int.TryParse(dbrdr["idbrands"].ToString(), out idBrands);
+                    int idHobbies;
+                    int.TryParse(dbrdr["idHobbies"].ToString(), out idHobbies);
+                    int idMovieGenres;
+                    int.TryParse(dbrdr["idmoviegenres"].ToString(), out idMovieGenres);
+                    int idMusicGenres;
+                    int.TryParse(dbrdr["idmusicgenres"].ToString(), out idMusicGenres);
+                    int idSports;
+                    int.TryParse(dbrdr["idsports"].ToString(), out idSports);
 
-                    uneListeDeBacheliers.Add(new Bachelor(id, username, password, email, numberOfLikes));
+                    uneListeDeBacheliers.Add(new Bachelor(id, username, password, email, numberOfLikes, imagePath, idBookGenres, idBrands, idHobbies, idMovieGenres, idMusicGenres, idSports));
                 }
                 LiteralControl chaineHtml = new LiteralControl();
                 chaineHtml.Text += "<tr><td colspan=\"3\">==========</td></tr>";
@@ -257,6 +342,7 @@ namespace WebApplication1
                     chaineHtml.Text += "<td>" + uneListeDeBacheliers[i].Username + "</td>";
                     chaineHtml.Text += "<td>" + uneListeDeBacheliers[i].NumberOfLikes + "</td>";
                     chaineHtml.Text += "<td>" + "17%" + "</td>";
+                    chaineHtml.Text += "<td><a href=\"profileView.aspx?username=" + uneListeDeBacheliers[i].Username + "\">Voir profile</a></td>";
                     chaineHtml.Text += "</tr>";
                 }
                 chaineHtml.Text += "</table>";

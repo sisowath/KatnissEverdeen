@@ -13,9 +13,24 @@ namespace WebApplication1
     public partial class WebForm4 : System.Web.UI.Page
     {
         private List<Interest> uneListeDeChampInterets = new List<Interest>();
+        private Bachelor unBachelor;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["isConnected"] == null) Response.Redirect("login.aspx");
+
+            if (Session["profile"] != null)
+            {
+                unBachelor = (Bachelor)Session["profile"];
+                txtId.Text = unBachelor.Id.ToString();
+                txtUsername.Text = unBachelor.Username;
+                txtPassword.Text = unBachelor.Password;
+                txtEmail.Text = unBachelor.Email;
+                txtNumberOfLikes.Text = unBachelor.NumberOfLikes.ToString();
+                pbxImage.ImageUrl = unBachelor.Image;
+                pbxImage.Height=300;
+                pbxImage.Width = 530;                
+            }
             MySqlConnection cnx = new MySqlConnection("server=localhost;user=root;password=root;database=katnisseverdeen");
             cnx.Open();
             MySqlCommand cmd = cnx.CreateCommand();
@@ -35,7 +50,10 @@ namespace WebApplication1
                 LiteralControl chaineHtml = new LiteralControl();
                 chaineHtml.Text = "<select id=\"booksGenres\" width=\"100%\">";
                 for (int i = 0; i < uneListeDeChampInterets.Count; i++)
-                    chaineHtml.Text += "<option value=\"" + uneListeDeChampInterets[i].Nom  + "\">" + uneListeDeChampInterets[i].Nom + "</option>";
+                {
+                    //if(uneListeDeChampInterets[i].Id.Equals(unBachelor.);
+                    chaineHtml.Text += "<option value=\"" + uneListeDeChampInterets[i].Nom + "\">" + uneListeDeChampInterets[i].Nom + "</option>";
+                }
                 chaineHtml.Text += "</select>";
                 bookGenres.Controls.Add(chaineHtml);
             }
@@ -139,19 +157,40 @@ namespace WebApplication1
                 chaineHtml.Text += "</select>";
                 movieGenres.Controls.Add(chaineHtml);
             }
-            cnx.Close();
+            cnx.Close();            
+        }
 
-            if (Session["profile"] != null)
+        protected void btnLike_Click(object sender, EventArgs e)
+        {
+            MySqlConnection cnx = new MySqlConnection("server=localhost;user=root;password=root;database=katnisseverdeen");
+            cnx.Open();
+            MySqlCommand cmd = cnx.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT numberOfLikes FROM bachelor WHERE id = @id";
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("@id", unBachelor.Id);
+            int x = 0;
+            using (DbDataReader dbrdr = cmd.ExecuteReader())
             {
-                Bachelor unBachelor = (Bachelor)Session["profile"];
-                txtId.Text = unBachelor.Id.ToString();
-                txtUsername.Text = unBachelor.Username;
-                txtPassword.Text = unBachelor.Password;
-                txtEmail.Text = unBachelor.Email;
-                txtNumberOfLikes.Text = unBachelor.NumberOfLikes.ToString();
-
-
+                if(dbrdr.Read())
+                {
+                    int.TryParse(dbrdr["numberOfLikes"].ToString(), out x);   
+                }                
             }
+            cmd.CommandText = "UPDATE bachelor SET numberOfLikes = @numberOfLikes WHERE id = @id";
+            cmd.Prepare();
+            cmd.Parameters.AddWithValue("@numberOfLikes", (x++));
+            using (DbDataReader dbrdr = cmd.ExecuteReader())
+            {
+                if (dbrdr.Read())
+                {                   
+                }
+                unBachelor.NumberOfLikes = x++;
+                txtNumberOfLikes.Text = unBachelor.NumberOfLikes.ToString();
+                Session["profile"] = unBachelor;
+                lblMessage.Text = "<h3 style=\"color:blue\">Likes Updated !!</h3>";                
+            }
+            cnx.Close();
         }
     }
 }

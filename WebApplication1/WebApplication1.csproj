@@ -55,8 +55,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="databases\katnisseverdeen.sql" />
+    <Content Include="databases\katnisseverdeen_old.sql" />
+    <Content Include="images\artemis.jpg" />
+    <Content Include="images\candice_swanepoel.jpg" />
     <Content Include="images\footerBackground.png" />
+    <Content Include="images\katnisseverdeen.jpg" />
+    <Content Include="images\megan_fox.jpg" />
+    <Content Include="images\michelle_keegan.jpg" />
+    <Content Include="images\miranda_kerr.jpg" />
     <Content Include="images\reachingGod.jpg" />
+    <Content Include="images\scarlett_johansson.jpg" />
+    <Content Include="images\zeus.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -70,6 +79,7 @@
     <Content Include="profile.aspx" />
     <Content Include="match.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="profileView.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bachelor.cs" />
@@ -123,6 +133,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="profileView.aspx.cs">
+      <DependentUpon>profileView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="profileView.aspx.designer.cs">
+      <DependentUpon>profileView.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

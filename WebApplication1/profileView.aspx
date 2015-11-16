@@ -1,6 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="profile.aspx.cs" Inherits="WebApplication1.WebForm4" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">    
-    <br />
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="profileView.aspx.cs" Inherits="WebApplication1.WebForm7" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Label ID="lblMessage" runat="server">
     
     </asp:Label>
@@ -46,49 +45,43 @@
         <tr>
             <td>Style de musique</td>
             <td>
-                <asp:PlaceHolder ID="musicGenres" runat="server">
-                
-                </asp:PlaceHolder>
+                <asp:Label ID="lblMusicGenres" runat="server">
+                </asp:Label>
             </td>
         </tr>
         <tr>
             <td>Style de livre</td>
             <td>
-                <asp:PlaceHolder ID="bookGenres" runat="server">
-                
-                </asp:PlaceHolder>
+                <asp:Label ID="lblBookGenres" runat="server">
+                </asp:Label>
             </td>
         </tr>
         <tr>
             <td>Type de film</td>
             <td>
-                <asp:PlaceHolder ID="movieGenres" runat="server">
-                
-                </asp:PlaceHolder>
+                <asp:Label ID="lblMovieGenres" runat="server">
+                </asp:Label>
             </td>
         </tr>
         <tr>
             <td>Marque </td>
             <td>
-                <asp:PlaceHolder ID="brands" runat="server">
-                
-                </asp:PlaceHolder>
+                <asp:Label ID="lblBrand" runat="server">
+                </asp:Label>
             </td>
         </tr>
         <tr>
             <td>Loisir</td>
             <td>
-                <asp:PlaceHolder ID="hobbies" runat="server">
-                
-                </asp:PlaceHolder>
+                <asp:Label ID="lblHobbies" runat="server">
+                </asp:Label>
             </td>
         </tr>
         <tr>
             <td>Sports</td>
             <td>
-                <asp:PlaceHolder ID="sports" runat="server">
-                
-                </asp:PlaceHolder>
+                <asp:Label Id="lblSports" runat="server">
+                </asp:Label>
             </td>
         </tr>
     </table>
